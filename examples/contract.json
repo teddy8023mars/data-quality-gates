@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "required_columns": [
+    "id",
+    "score",
+    "team",
+    "updated_at"
+  ],
+  "empty_policy": "fail",
+  "checks": [
+    {
+      "id": "id_present",
+      "type": "not_null",
+      "columns": [
+        "id"
+      ]
+    },
+    {
+      "id": "id_unique",
+      "type": "unique",
+      "columns": [
+        "id"
+      ]
+    },
+    {
+      "id": "score_bounds",
+      "type": "numeric_range",
+      "column": "score",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "id": "team_values",
+      "type": "allowed_values",
+      "column": "team",
+      "values": [
+        "red",
+        "blue"
+      ]
+    },
+    {
+      "id": "team_fk",
+      "type": "foreign_key",
+      "column": "team",
+      "reference_file": "teams.csv",
+      "reference_column": "team"
+    },
+    {
+      "id": "fresh",
+      "type": "freshness",
+      "column": "updated_at",
+      "max_age_seconds": 3600
+    }
+  ]
+}

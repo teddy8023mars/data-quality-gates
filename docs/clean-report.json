@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "rows": 2,
+  "reference_time": "2026-10-15T12:00:00+00:00",
+  "missing_columns": [],
+  "empty_violation": false,
+  "checks": [
+    {
+      "id": "id_present",
+      "type": "not_null",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "id_unique",
+      "type": "unique",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "score_bounds",
+      "type": "numeric_range",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "team_values",
+      "type": "allowed_values",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "team_fk",
+      "type": "foreign_key",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "fresh",
+      "type": "freshness",
+      "violations": 0,
+      "rows": []
+    }
+  ]
+}

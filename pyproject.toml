@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "data-quality-gates"
+version = "0.1.0"
+description = "Declarative CSV quality contracts with deterministic JSON reports"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+data-quality-gates = "data_quality_gates.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

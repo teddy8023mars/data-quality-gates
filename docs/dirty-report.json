@@ -1,0 +1,63 @@
+{
+  "status": "failed",
+  "rows": 3,
+  "reference_time": "2026-10-15T12:00:00+00:00",
+  "missing_columns": [],
+  "empty_violation": false,
+  "checks": [
+    {
+      "id": "id_present",
+      "type": "not_null",
+      "violations": 1,
+      "rows": [
+        4
+      ]
+    },
+    {
+      "id": "id_unique",
+      "type": "unique",
+      "violations": 1,
+      "rows": [
+        3
+      ]
+    },
+    {
+      "id": "score_bounds",
+      "type": "numeric_range",
+      "violations": 3,
+      "rows": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "team_values",
+      "type": "allowed_values",
+      "violations": 2,
+      "rows": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "team_fk",
+      "type": "foreign_key",
+      "violations": 2,
+      "rows": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "fresh",
+      "type": "freshness",
+      "violations": 3,
+      "rows": [
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

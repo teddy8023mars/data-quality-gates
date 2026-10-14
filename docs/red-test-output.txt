@@ -1,0 +1,466 @@
+test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) ... 
+  test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,id\na,b\n') ... ERROR
+  test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,\na,b\n') ... ERROR
+  test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,score,team,updated_at\na,1,red\n') ... ERROR
+  test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,score,team,updated_at\n"unterminated') ... ERROR
+test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) ... ERROR
+test_clean_inclusive_bounds_and_timezone_conversion (test_gates.GatesTests.test_clean_inclusive_bounds_and_timezone_conversion) ... ERROR
+test_cli_duplicate_json_keys_are_config_error (test_gates.GatesTests.test_cli_duplicate_json_keys_are_config_error) ... FAIL
+test_cli_exit_codes_and_report_file (test_gates.GatesTests.test_cli_exit_codes_and_report_file) ... ERROR
+test_composite_unique_counts_subsequent_rows (test_gates.GatesTests.test_composite_unique_counts_subsequent_rows) ... ERROR
+test_dirty_has_exact_violation_records (test_gates.GatesTests.test_dirty_has_exact_violation_records) ... ERROR
+test_empty_policy_and_zero_byte_file (test_gates.GatesTests.test_empty_policy_and_zero_byte_file) ... ERROR
+test_fk_missing_file_or_schema_is_input_error_even_empty (test_gates.GatesTests.test_fk_missing_file_or_schema_is_input_error_even_empty) ... ERROR
+test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) ... 
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10aa47420>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41300>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab413a0>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41440>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab414e0>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41580>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41620>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab416c0>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41760>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41800>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab418a0>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41940>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab419e0>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41a80>) ... ERROR
+  test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41b20>) ... ERROR
+test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) ... 
+  test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='2026-10-15T12:00:00') ... ERROR
+  test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='garbage') ... ERROR
+  test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='2026-10-15') ... ERROR
+test_missing_schema_is_quality_failure (test_gates.GatesTests.test_missing_schema_is_quality_failure) ... ERROR
+test_nonfinite_and_malformed_numeric_values_fail_quality (test_gates.GatesTests.test_nonfinite_and_malformed_numeric_values_fail_quality) ... ERROR
+
+======================================================================
+ERROR: test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,id\na,b\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 71, in test_bad_csv_shape_headers_and_utf8_are_input_errors
+    with self.assertRaises(InputError): evaluate(contract(), self.data, NOW, self.base)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,\na,b\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 71, in test_bad_csv_shape_headers_and_utf8_are_input_errors
+    with self.assertRaises(InputError): evaluate(contract(), self.data, NOW, self.base)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,score,team,updated_at\na,1,red\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 71, in test_bad_csv_shape_headers_and_utf8_are_input_errors
+    with self.assertRaises(InputError): evaluate(contract(), self.data, NOW, self.base)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) (text='id,score,team,updated_at\n"unterminated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 71, in test_bad_csv_shape_headers_and_utf8_are_input_errors
+    with self.assertRaises(InputError): evaluate(contract(), self.data, NOW, self.base)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 73, in test_bad_csv_shape_headers_and_utf8_are_input_errors
+    with self.assertRaises(InputError): evaluate(contract(), self.data, NOW, self.base)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_clean_inclusive_bounds_and_timezone_conversion (test_gates.GatesTests.test_clean_inclusive_bounds_and_timezone_conversion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 40, in test_clean_inclusive_bounds_and_timezone_conversion
+    report = self.run_data('a,0,red,2026-10-15T19:00:00+08:00\nb,100,blue,2026-10-15T12:00:00Z\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_cli_exit_codes_and_report_file (test_gates.GatesTests.test_cli_exit_codes_and_report_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 116, in test_cli_exit_codes_and_report_file
+    proc = self.cli(rows=rows)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 110, in cli
+    self.run_data(rows)
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_composite_unique_counts_subsequent_rows (test_gates.GatesTests.test_composite_unique_counts_subsequent_rows)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 106, in test_composite_unique_counts_subsequent_rows
+    report = self.run_data('a,1,red,x\na,2,blue,x\na,3,red,x\n,4,blue,x\n ,5,blue,x\n', cfg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_dirty_has_exact_violation_records (test_gates.GatesTests.test_dirty_has_exact_violation_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 46, in test_dirty_has_exact_violation_records
+    report = self.run_data('a,101,green,2026-10-15T10:00:00Z\na,bad,red,2026-10-15T12:00:01Z\n ,NaN,,2026-10-15T12:00:00\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_empty_policy_and_zero_byte_file (test_gates.GatesTests.test_empty_policy_and_zero_byte_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 53, in test_empty_policy_and_zero_byte_file
+    self.assertEqual(self.run_data('')['status'], 'failed')
+                     ^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_fk_missing_file_or_schema_is_input_error_even_empty (test_gates.GatesTests.test_fk_missing_file_or_schema_is_input_error_even_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 100, in test_fk_missing_file_or_schema_is_input_error_even_empty
+    with self.assertRaises(InputError): self.run_data('')
+                                        ^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10aa47420>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41300>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab413a0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41440>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab414e0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41580>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41620>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab416c0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41760>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41800>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab418a0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41940>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab419e0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41a80>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) (mutation=<function GatesTests.test_invalid_config_never_silently_passes.<locals>.<lambda> at 0x10ab41b20>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 87, in test_invalid_config_never_silently_passes
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='2026-10-15T12:00:00')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 92, in test_invalid_reference_time_is_input_error
+    with self.assertRaises(InputError): self.run_data('', now=now)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='garbage')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 92, in test_invalid_reference_time_is_input_error
+    with self.assertRaises(InputError): self.run_data('', now=now)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) (now='2026-10-15')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 92, in test_invalid_reference_time_is_input_error
+    with self.assertRaises(InputError): self.run_data('', now=now)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_missing_schema_is_quality_failure (test_gates.GatesTests.test_missing_schema_is_quality_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 62, in test_missing_schema_is_quality_failure
+    report = evaluate(contract(), self.data, NOW, self.base)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+ERROR: test_nonfinite_and_malformed_numeric_values_fail_quality (test_gates.GatesTests.test_nonfinite_and_malformed_numeric_values_fail_quality)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 95, in test_nonfinite_and_malformed_numeric_values_fail_quality
+    report = self.run_data('a,Infinity,red,2026-10-15T12:00:00Z\nb,-1,red,2026-10-15T12:00:00Z\nc,,red,2026-10-15T12:00:00Z\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 37, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/__init__.py", line 10, in evaluate
+    raise NotImplementedError('Quality evaluator is not implemented')
+NotImplementedError: Quality evaluator is not implemented
+
+======================================================================
+FAIL: test_cli_duplicate_json_keys_are_config_error (test_gates.GatesTests.test_cli_duplicate_json_keys_are_config_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 130, in test_cli_duplicate_json_keys_are_config_error
+    self.assertEqual(proc.returncode, 2)
+AssertionError: 99 != 2
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.021s
+
+FAILED (failures=1, errors=31)

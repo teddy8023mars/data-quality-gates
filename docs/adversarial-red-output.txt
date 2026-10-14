@@ -1,0 +1,41 @@
+test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) ... ok
+test_clean_inclusive_bounds_and_timezone_conversion (test_gates.GatesTests.test_clean_inclusive_bounds_and_timezone_conversion) ... ok
+test_cli_duplicate_json_keys_are_config_error (test_gates.GatesTests.test_cli_duplicate_json_keys_are_config_error) ... ok
+test_cli_exit_codes_and_report_file (test_gates.GatesTests.test_cli_exit_codes_and_report_file) ... ok
+test_composite_unique_counts_subsequent_rows (test_gates.GatesTests.test_composite_unique_counts_subsequent_rows) ... ok
+test_dirty_has_exact_violation_records (test_gates.GatesTests.test_dirty_has_exact_violation_records) ... ok
+test_empty_policy_and_zero_byte_file (test_gates.GatesTests.test_empty_policy_and_zero_byte_file) ... ok
+test_fk_missing_file_or_schema_is_input_error_even_empty (test_gates.GatesTests.test_fk_missing_file_or_schema_is_input_error_even_empty) ... ok
+test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) ... ok
+test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) ... ok
+test_invalid_timezone_and_stale_boundary (test_gates.GatesTests.test_invalid_timezone_and_stale_boundary) ... ok
+test_json_nonfinite_and_malformed_contract_errors (test_gates.GatesTests.test_json_nonfinite_and_malformed_contract_errors) ... ok
+test_missing_schema_is_quality_failure (test_gates.GatesTests.test_missing_schema_is_quality_failure) ... ok
+test_nonfinite_and_malformed_numeric_values_fail_quality (test_gates.GatesTests.test_nonfinite_and_malformed_numeric_values_fail_quality) ... ok
+test_null_byte_reference_path_is_config_error (test_gates.GatesTests.test_null_byte_reference_path_is_config_error) ... ERROR
+
+======================================================================
+ERROR: test_null_byte_reference_path_is_config_error (test_gates.GatesTests.test_null_byte_reference_path_is_config_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 109, in test_null_byte_reference_path_is_config_error
+    with self.assertRaises(ConfigError): self.run_data('', cfg)
+                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/tests/test_gates.py", line 35, in run_data
+    return evaluate(cfg or contract(), self.data, now, self.base)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/engine.py", line 144, in evaluate
+    header, rows = read_csv(path)
+                   ^^^^^^^^^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/data-quality-gates/src/data_quality_gates/engine.py", line 116, in read_csv
+    with Path(path).open(encoding='utf-8', newline='') as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: embedded null byte
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.214s
+
+FAILED (errors=1)

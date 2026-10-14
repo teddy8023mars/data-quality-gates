@@ -1,0 +1,29 @@
+name: quality-gates
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: src
+      - name: Clean fixture must pass
+        run: python -m data_quality_gates --contract examples/contract.json --data examples/clean.csv --reference-time 2026-10-15T12:00:00Z
+        env:
+          PYTHONPATH: src
+      - name: Dirty fixture must fail with quality exit 1
+        shell: bash
+        run: |
+          set +e
+          python -m data_quality_gates --contract examples/contract.json --data examples/dirty.csv --reference-time 2026-10-15T12:00:00Z
+          result=$?
+          test "$result" -eq 1
+        env:
+          PYTHONPATH: src
