@@ -53,7 +53,7 @@ flowchart LR
     D[Synthetic data CSV] --> L
     R[Reference CSV] --> L
     L --> S[Required schema and empty policy]
-    S --> Q[Six quality checks]
+    S --> Q[Seven supported check types]
     Q --> O[JSON report and exit code]
 ```
 
@@ -70,6 +70,7 @@ See [examples/contract.json](examples/contract.json) for a complete six-check co
 | `numeric_range` | `column`, at least one of `min`/`max` | Finite decimal parsing; inclusive bounds. Null, NaN, Inf and malformed values fail as quality violations. Signs, decimal fractions and scientific notation supported; underscores and thousands separators rejected. |
 | `allowed_values` | `column`, `values`: nonempty distinct nonblank strings | Exact string membership, with null always failing. |
 | `foreign_key` | `column`, `reference_file`, `reference_column` | Exact membership in non-null reference values; null always fails. Reference duplicates are harmless. Missing/unreadable file or missing reference column is an input error. Empty reference table means no matching keys. |
+| `column_compare` | `left_column`, `right_column`, `operator`: `<=`, `>=` or `==` | Row-wise finite decimal comparison between two distinct required columns; inclusive comparisons and numeric equality. Null, malformed or non-finite cells on either side fail. No expressions are evaluated. |
 | `freshness` | `column`, `max_age_seconds`: finite number >= 0 | Datetime age satisfies `0 <= age <= max_age_seconds`. Future, stale, invalid, naive or null timestamp fails. Offset-normalized comparison with microsecond precision. |
 
 Timestamps use `YYYY-MM-DDTHH:MM:SS[.fraction](Z|+HH:MM|-HH:MM)`. Offsets require hours 00–23 and minutes 00–59; calendar/clock values must be valid. Leap seconds and named timezone/DST databases are unsupported. Python datetime truncates fractions beyond six digits. Invalid reference time is an input error; invalid cell timestamps are quality violations. System time never affects evaluations.
@@ -77,6 +78,10 @@ Timestamps use `YYYY-MM-DDTHH:MM:SS[.fraction](Z|+HH:MM|-HH:MM)`. Offsets requir
 CSV inputs are UTF-8, comma-delimited, with one nonblank, unique header per column. Extra columns are permitted. Missing required columns produce a quality-failure report and skip all checks; malformed row width or quoting, duplicate headers and invalid UTF-8 are input errors. References are loaded before checking primary-data emptiness or schema, so broken references cannot hide behind an empty file. Header-only data follows `empty_policy`; zero-byte data is invalid input. Empty policy does not exempt an invalid header. Python's CSV reader ignores physically blank lines; an explicit empty CSV record with fields is evaluated normally.
 
 Reports preserve contract order and include `rows`, normalized `reference_time`, `missing_columns`, `empty_violation`, and per-check `id`, `type`, `violations`, `rows`. Row identifiers are 1-based CSV record numbers including the header (first data record is 2), excluding ignored blank lines; quoted multiline fields count as a single record. The report lists every violation record, without cell-value samples.
+
+## Analytics output contract
+
+[Reproduce the MOBA retention gate](docs/retention-contract.md): eight real synthetic export rows pass seven checks; changing retained users to 4 in a cohort of 3 fails at CSV record 2 with exit 1. Independent numeric ranges alone would miss this business rule. The [snapshot provenance](examples/moba-retention/PROVENANCE.md) pins the source commit and checksum. This example runs without installing the MOBA project. The interactive showcase above continues to demonstrate the original six-check contract.
 
 ## Showcase export
 
@@ -92,7 +97,7 @@ Open `http://localhost:8000/` for the interactive page. [Visual acceptance and v
 
 ## Verification and limits
 
-[docs/verification.md](docs/verification.md) records actual local runs; [docs/implementation-plan.md](docs/implementation-plan.md) pins the interface and decisions. CI checks Python 3.11/3.12, the suite, clean exit 0 and intentional dirty exit 1. Remote CI is pending until this project is published and its workflow runs.
+[docs/verification.md](docs/verification.md) records actual local runs; [docs/implementation-plan.md](docs/implementation-plan.md) pins the interface and decisions. CI checks Python 3.11/3.12, the suite, clean exit 0 and intentional dirty exit 1. GitHub Actions publishes validation results for each commit; see the repository Actions tab for current run status.
 
 This is an in-memory local CSV gate. Time/memory grow with records, checks, reference keys and report size; there is no streaming, performance benchmark, database connector, distributed execution, sampling, scheduling, remediation, schema inference or full JSON Schema engine. UTF-8 BOM and alternate delimiters are unsupported. The contract language explicitly validates required settings but does not impose a dataset row limit. No cross-table consistency snapshot is guaranteed if files change during loading. Reports are regular file writes, not transactional replacements. Use immutable inputs and separate report destinations for reliable local runs.
 

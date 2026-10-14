@@ -27,3 +27,16 @@ jobs:
           test "$result" -eq 1
         env:
           PYTHONPATH: src
+      - name: Retention export passes business contract
+        run: python -m data_quality_gates --contract examples/moba-retention/contract.json --data examples/moba-retention/clean.csv --reference-time 2026-10-15T12:00:00Z
+        env:
+          PYTHONPATH: src
+      - name: Impossible retention fails the gate
+        shell: bash
+        run: |
+          set +e
+          python -m data_quality_gates --contract examples/moba-retention/contract.json --data examples/moba-retention/dirty.csv --reference-time 2026-10-15T12:00:00Z
+          result=$?
+          test "$result" -eq 1
+        env:
+          PYTHONPATH: src

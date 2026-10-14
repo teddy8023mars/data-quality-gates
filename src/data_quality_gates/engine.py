@@ -1,5 +1,6 @@
 """Validate configuration before reading data, then evaluate every configured check."""
 import csv
+import operator
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -73,7 +74,8 @@ def validate_contract(contract):
         'numeric_range': (('column',), ('min', 'max')),
         'allowed_values': (('column', 'values'), ()),
         'foreign_key': (('column', 'reference_file', 'reference_column'), ()),
-        'freshness': (('column', 'max_age_seconds'), ())}
+        'freshness': (('column', 'max_age_seconds'), ()),
+        'column_compare': (('left_column', 'right_column', 'operator'), ())}
     for check in contract['checks']:
         if not isinstance(check, dict) or not isinstance(check.get('type'), str) or check['type'] not in specs:
             raise ConfigError('unknown check type')
@@ -82,11 +84,15 @@ def validate_contract(contract):
         if not nonempty_string(check['id']) or check['id'] in seen:
             raise ConfigError('check ids must be nonempty and unique')
         seen.add(check['id'])
-        columns = check.get('columns', [check.get('column')])
+        columns = ([check['left_column'], check['right_column']] if check['type'] == 'column_compare'
+                   else check.get('columns', [check.get('column')]))
         if not names(columns) or any(c not in contract['required_columns'] for c in columns):
             raise ConfigError('check columns must exist in required_columns')
         kind = check['type']
-        if kind == 'numeric_range':
+        if kind == 'column_compare':
+            if check['operator'] not in ('<=', '>=', '=='):
+                raise ConfigError('column_compare operator must be <=, >= or ==')
+        elif kind == 'numeric_range':
             if 'min' not in check and 'max' not in check:
                 raise ConfigError('numeric_range needs min or max')
             for key in ('min', 'max'):
@@ -170,6 +176,13 @@ def evaluate(contract, data_path, reference_time, base_dir):
                 try:
                     numeric = number(value)
                     bad = ('min' in check and numeric < number(check['min'])) or ('max' in check and numeric > number(check['max']))
+                except ValueError: bad = True
+            elif kind == 'column_compare':
+                try:
+                    left = number(row[check['left_column']])
+                    right = number(row[check['right_column']])
+                    compare = {'<=': operator.le, '>=': operator.ge, '==': operator.eq}[check['operator']]
+                    bad = not compare(left, right)
                 except ValueError: bad = True
             elif kind == 'allowed_values':
                 bad = null(value) or value not in check['values']
