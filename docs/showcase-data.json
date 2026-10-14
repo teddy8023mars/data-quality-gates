@@ -1,0 +1,490 @@
+{
+  "synthetic": true,
+  "reference_time": "2026-10-15T12:00:00Z",
+  "contract": {
+    "version": 1,
+    "required_columns": [
+      "id",
+      "score",
+      "team",
+      "updated_at"
+    ],
+    "empty_policy": "fail",
+    "checks": [
+      {
+        "id": "id_present",
+        "type": "not_null",
+        "columns": [
+          "id"
+        ]
+      },
+      {
+        "id": "id_unique",
+        "type": "unique",
+        "columns": [
+          "id"
+        ]
+      },
+      {
+        "id": "score_bounds",
+        "type": "numeric_range",
+        "column": "score",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "id": "team_values",
+        "type": "allowed_values",
+        "column": "team",
+        "values": [
+          "red",
+          "blue"
+        ]
+      },
+      {
+        "id": "team_fk",
+        "type": "foreign_key",
+        "column": "team",
+        "reference_file": "teams.csv",
+        "reference_column": "team"
+      },
+      {
+        "id": "fresh",
+        "type": "freshness",
+        "column": "updated_at",
+        "max_age_seconds": 3600
+      }
+    ]
+  },
+  "fixtures": {
+    "clean": {
+      "report": {
+        "status": "passed",
+        "rows": 2,
+        "reference_time": "2026-10-15T12:00:00+00:00",
+        "missing_columns": [],
+        "empty_violation": false,
+        "checks": [
+          {
+            "id": "id_present",
+            "type": "not_null",
+            "violations": 0,
+            "rows": []
+          },
+          {
+            "id": "id_unique",
+            "type": "unique",
+            "violations": 0,
+            "rows": []
+          },
+          {
+            "id": "score_bounds",
+            "type": "numeric_range",
+            "violations": 0,
+            "rows": []
+          },
+          {
+            "id": "team_values",
+            "type": "allowed_values",
+            "violations": 0,
+            "rows": []
+          },
+          {
+            "id": "team_fk",
+            "type": "foreign_key",
+            "violations": 0,
+            "rows": []
+          },
+          {
+            "id": "fresh",
+            "type": "freshness",
+            "violations": 0,
+            "rows": []
+          }
+        ]
+      },
+      "exit_code": 0,
+      "columns": [
+        "id",
+        "score",
+        "team",
+        "updated_at"
+      ],
+      "records": [
+        {
+          "record": 2,
+          "values": {
+            "id": "a",
+            "score": "0",
+            "team": "red",
+            "updated_at": "2026-10-15T19:00:00+08:00"
+          }
+        },
+        {
+          "record": 3,
+          "values": {
+            "id": "b",
+            "score": "100",
+            "team": "blue",
+            "updated_at": "2026-10-15T12:00:00Z"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "id_present",
+          "type": "not_null",
+          "violations": 0,
+          "rows": [],
+          "label": "ID present",
+          "description": "ID cannot be blank or whitespace.",
+          "samples": []
+        },
+        {
+          "id": "id_unique",
+          "type": "unique",
+          "violations": 0,
+          "rows": [],
+          "label": "ID unique",
+          "description": "Every ID after its first occurrence is a violation.",
+          "samples": []
+        },
+        {
+          "id": "score_bounds",
+          "type": "numeric_range",
+          "violations": 0,
+          "rows": [],
+          "label": "Score bounds",
+          "description": "Score must be a finite number from 0 to 100, inclusive.",
+          "samples": []
+        },
+        {
+          "id": "team_values",
+          "type": "allowed_values",
+          "violations": 0,
+          "rows": [],
+          "label": "Allowed team",
+          "description": "Team must be exactly red or blue.",
+          "samples": []
+        },
+        {
+          "id": "team_fk",
+          "type": "foreign_key",
+          "violations": 0,
+          "rows": [],
+          "label": "Team reference",
+          "description": "Team must exist in the synthetic teams.csv reference.",
+          "samples": []
+        },
+        {
+          "id": "fresh",
+          "type": "freshness",
+          "violations": 0,
+          "rows": [],
+          "label": "Freshness",
+          "description": "Timestamp must include a timezone and be between 0 and 3,600 seconds old.",
+          "samples": []
+        }
+      ],
+      "violation_total": 0,
+      "distinct_bad_records": [],
+      "distinct_bad_count": 0
+    },
+    "dirty": {
+      "report": {
+        "status": "failed",
+        "rows": 3,
+        "reference_time": "2026-10-15T12:00:00+00:00",
+        "missing_columns": [],
+        "empty_violation": false,
+        "checks": [
+          {
+            "id": "id_present",
+            "type": "not_null",
+            "violations": 1,
+            "rows": [
+              4
+            ]
+          },
+          {
+            "id": "id_unique",
+            "type": "unique",
+            "violations": 1,
+            "rows": [
+              3
+            ]
+          },
+          {
+            "id": "score_bounds",
+            "type": "numeric_range",
+            "violations": 3,
+            "rows": [
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": "team_values",
+            "type": "allowed_values",
+            "violations": 2,
+            "rows": [
+              2,
+              4
+            ]
+          },
+          {
+            "id": "team_fk",
+            "type": "foreign_key",
+            "violations": 2,
+            "rows": [
+              2,
+              4
+            ]
+          },
+          {
+            "id": "fresh",
+            "type": "freshness",
+            "violations": 3,
+            "rows": [
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      "exit_code": 1,
+      "columns": [
+        "id",
+        "score",
+        "team",
+        "updated_at"
+      ],
+      "records": [
+        {
+          "record": 2,
+          "values": {
+            "id": "a",
+            "score": "101",
+            "team": "green",
+            "updated_at": "2026-10-15T10:00:00Z"
+          }
+        },
+        {
+          "record": 3,
+          "values": {
+            "id": "a",
+            "score": "bad",
+            "team": "red",
+            "updated_at": "2026-10-15T12:00:01Z"
+          }
+        },
+        {
+          "record": 4,
+          "values": {
+            "id": " ",
+            "score": "NaN",
+            "team": "",
+            "updated_at": "2026-10-15T12:00:00"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "id_present",
+          "type": "not_null",
+          "violations": 1,
+          "rows": [
+            4
+          ],
+          "label": "ID present",
+          "description": "ID cannot be blank or whitespace.",
+          "samples": [
+            {
+              "record": 4,
+              "values": {
+                "id": " ",
+                "score": "NaN",
+                "team": "",
+                "updated_at": "2026-10-15T12:00:00"
+              }
+            }
+          ]
+        },
+        {
+          "id": "id_unique",
+          "type": "unique",
+          "violations": 1,
+          "rows": [
+            3
+          ],
+          "label": "ID unique",
+          "description": "Every ID after its first occurrence is a violation.",
+          "samples": [
+            {
+              "record": 3,
+              "values": {
+                "id": "a",
+                "score": "bad",
+                "team": "red",
+                "updated_at": "2026-10-15T12:00:01Z"
+              }
+            }
+          ]
+        },
+        {
+          "id": "score_bounds",
+          "type": "numeric_range",
+          "violations": 3,
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "label": "Score bounds",
+          "description": "Score must be a finite number from 0 to 100, inclusive.",
+          "samples": [
+            {
+              "record": 2,
+              "values": {
+                "id": "a",
+                "score": "101",
+                "team": "green",
+                "updated_at": "2026-10-15T10:00:00Z"
+              }
+            },
+            {
+              "record": 3,
+              "values": {
+                "id": "a",
+                "score": "bad",
+                "team": "red",
+                "updated_at": "2026-10-15T12:00:01Z"
+              }
+            },
+            {
+              "record": 4,
+              "values": {
+                "id": " ",
+                "score": "NaN",
+                "team": "",
+                "updated_at": "2026-10-15T12:00:00"
+              }
+            }
+          ]
+        },
+        {
+          "id": "team_values",
+          "type": "allowed_values",
+          "violations": 2,
+          "rows": [
+            2,
+            4
+          ],
+          "label": "Allowed team",
+          "description": "Team must be exactly red or blue.",
+          "samples": [
+            {
+              "record": 2,
+              "values": {
+                "id": "a",
+                "score": "101",
+                "team": "green",
+                "updated_at": "2026-10-15T10:00:00Z"
+              }
+            },
+            {
+              "record": 4,
+              "values": {
+                "id": " ",
+                "score": "NaN",
+                "team": "",
+                "updated_at": "2026-10-15T12:00:00"
+              }
+            }
+          ]
+        },
+        {
+          "id": "team_fk",
+          "type": "foreign_key",
+          "violations": 2,
+          "rows": [
+            2,
+            4
+          ],
+          "label": "Team reference",
+          "description": "Team must exist in the synthetic teams.csv reference.",
+          "samples": [
+            {
+              "record": 2,
+              "values": {
+                "id": "a",
+                "score": "101",
+                "team": "green",
+                "updated_at": "2026-10-15T10:00:00Z"
+              }
+            },
+            {
+              "record": 4,
+              "values": {
+                "id": " ",
+                "score": "NaN",
+                "team": "",
+                "updated_at": "2026-10-15T12:00:00"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fresh",
+          "type": "freshness",
+          "violations": 3,
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "label": "Freshness",
+          "description": "Timestamp must include a timezone and be between 0 and 3,600 seconds old.",
+          "samples": [
+            {
+              "record": 2,
+              "values": {
+                "id": "a",
+                "score": "101",
+                "team": "green",
+                "updated_at": "2026-10-15T10:00:00Z"
+              }
+            },
+            {
+              "record": 3,
+              "values": {
+                "id": "a",
+                "score": "bad",
+                "team": "red",
+                "updated_at": "2026-10-15T12:00:01Z"
+              }
+            },
+            {
+              "record": 4,
+              "values": {
+                "id": " ",
+                "score": "NaN",
+                "team": "",
+                "updated_at": "2026-10-15T12:00:00"
+              }
+            }
+          ]
+        }
+      ],
+      "violation_total": 12,
+      "distinct_bad_records": [
+        2,
+        3,
+        4
+      ],
+      "distinct_bad_count": 3
+    }
+  }
+}
