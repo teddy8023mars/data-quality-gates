@@ -1,0 +1,65 @@
+test_deep_contract_is_config_error (test_config_decoder.ConfigDecoderTests.test_deep_contract_is_config_error) ... FAIL
+test_oversized_integer_is_config_error (test_config_decoder.ConfigDecoderTests.test_oversized_integer_is_config_error) ... FAIL
+
+======================================================================
+FAIL: test_deep_contract_is_config_error (test_config_decoder.ConfigDecoderTests.test_deep_contract_is_config_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/tests/test_config_decoder.py", line 36, in test_deep_contract_is_config_error
+    self.check_contract('[' * 20000 + '0' + ']' * 20000)
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/tests/test_config_decoder.py", line 28, in check_contract
+    self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+AssertionError: 1 != 2 : Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/src/data_quality_gates/__main__.py", line 62, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/src/data_quality_gates/__main__.py", line 42, in main
+    contract = json.loads(args.contract.read_text(encoding='utf-8'), object_pairs_hook=unique_object, parse_constant=reject_constant, parse_float=decimal_token)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+RecursionError: maximum recursion depth exceeded while decoding a JSON array from a unicode string
+
+
+======================================================================
+FAIL: test_oversized_integer_is_config_error (test_config_decoder.ConfigDecoderTests.test_oversized_integer_is_config_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/tests/test_config_decoder.py", line 39, in test_oversized_integer_is_config_error
+    self.check_contract('{"version":' + '9' * 10000 + '}')
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/tests/test_config_decoder.py", line 28, in check_contract
+    self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+AssertionError: 1 != 2 : Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/src/data_quality_gates/__main__.py", line 62, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/teddy/Desktop/My Resume/portfolio-projects/.implementation-worktrees/quality-config-errors/src/data_quality_gates/__main__.py", line 42, in main
+    contract = json.loads(args.contract.read_text(encoding='utf-8'), object_pairs_hook=unique_object, parse_constant=reject_constant, parse_float=decimal_token)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teddy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Exceeds the limit (4300 digits) for integer string conversion: value has 10000 digits; use sys.set_int_max_str_digits() to increase the limit
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.041s
+
+FAILED (failures=2)

@@ -1,0 +1,7 @@
+{
+  "exit_code": 2,
+  "report": {
+    "status": "config_error",
+    "error": "invalid contract: maximum recursion depth exceeded while decoding a JSON array from a unicode string"
+  }
+}

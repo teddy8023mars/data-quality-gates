@@ -40,7 +40,9 @@ def main(argv=None):
     try:
         try:
             contract = json.loads(args.contract.read_text(encoding='utf-8'), object_pairs_hook=unique_object, parse_constant=reject_constant, parse_float=decimal_token)
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        except ConfigError:
+            raise
+        except (OSError, ValueError, RecursionError) as exc:
             raise ConfigError(f'invalid contract: {exc}') from exc
         report = evaluate(contract, args.data, args.reference_time, args.contract.parent)
         code = 0 if report['status'] == 'passed' else 1

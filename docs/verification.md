@@ -68,3 +68,27 @@ The earlier sections describe initial pre-publication validation. The additive c
 Six meaningful new tests first failed due to unsupported check/options and absent strict fixtures. Full28-test suite now passes in strict-test-output.txt. Actual strict CLI runs: clean0/eight zero counts; wrong-rate1/[0,0,0,0,0,0,0,1]; fractional-count1/[0,0,0,0,1,0,0,0]; impossible-count dirty1/[0,0,0,0,0,0,1,1]. All failures at CSV record2; reports captured from real output. Exact bounded rational checks avoid global Decimal precision/float-rounding false passes, with explicit per-operand stored encoding bounds. Original7-check fixture and6-check visual remain unchanged after exporter regeneration. Remote CI must be checked separately for the published commit.
 
 Review found JSON float rounding could accept invalid tolerance tokens or widen an exact boundary. Four direct-CLI raw-token subcases first failed, then passed after preserving Decimal tolerance tokens; other scalar numeric settings retain old float semantics. Invalid decimal construction becomes ConfigError. Full28 tests rerun successfully, all strict fixture outputs unchanged, original showcase rechecked unchanged. Independent fix review found no remaining blockers.
+
+## Contract decoder error taxonomy — 2026-10-15
+
+Two actual CLI inputs exposed uncaught exceptions: a JSON contract containing
+20,000 nested arrays raised `RecursionError`; a 10,000-digit integer with
+`PYTHONINTMAXSTRDIGITS=4300` raised plain `ValueError`. Both previously exited1
+with a traceback, instead of the declared config_error/exit2. [Two failing
+regressions](config-decoder-red.txt) were recorded before the narrow decoder fix.
+
+The contract loading boundary now normalizes these decoder errors to ConfigError,
+while existing explicit ConfigError messages (such as duplicate keys or invalid
+tolerance) are preserved. Evaluation and report writing are unchanged. Actual
+CLI outputs: [deep nesting](config-decoder-deep-output.json), [oversized integer](config-decoder-integer-output.json).
+Both exit2, emit config_error JSON without a traceback, and write a report file
+identical to stdout. The regression subprocesses run outside the source directory
+with a source import path and explicit integer digit-limit environment setting.
+
+Full30 tests pass on local Python3.12.14: [output](config-decoder-test-output.txt).
+The original showcase generator was rerun; JSON/SVG/HTML remain unchanged. Remote
+CI must still be checked on the published commit. This is error classification,
+not a new configurable nesting/size budget or resource-exhaustion defense; decoder
+limits depend on Python/runtime settings. Data-quality exit1 and input/report I/O
+exit3 retain their documented meanings. These two tests are in addition to the
+previous28, not a new check type or contract version.
