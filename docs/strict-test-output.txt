@@ -1,0 +1,33 @@
+test_bad_numeric_cells_fail_on_either_side (test_column_compare.ColumnCompareTests.test_bad_numeric_cells_fail_on_either_side) ... ok
+test_inclusive_numeric_comparisons (test_column_compare.ColumnCompareTests.test_inclusive_numeric_comparisons) ... ok
+test_invalid_configuration_rejected_even_for_empty_input (test_column_compare.ColumnCompareTests.test_invalid_configuration_rejected_even_for_empty_input) ... ok
+test_retention_cli_exposes_business_violation_and_exit_code (test_column_compare.ColumnCompareTests.test_retention_cli_exposes_business_violation_and_exit_code) ... ok
+test_bad_csv_shape_headers_and_utf8_are_input_errors (test_gates.GatesTests.test_bad_csv_shape_headers_and_utf8_are_input_errors) ... ok
+test_clean_inclusive_bounds_and_timezone_conversion (test_gates.GatesTests.test_clean_inclusive_bounds_and_timezone_conversion) ... ok
+test_cli_duplicate_json_keys_are_config_error (test_gates.GatesTests.test_cli_duplicate_json_keys_are_config_error) ... ok
+test_cli_exit_codes_and_report_file (test_gates.GatesTests.test_cli_exit_codes_and_report_file) ... ok
+test_composite_unique_counts_subsequent_rows (test_gates.GatesTests.test_composite_unique_counts_subsequent_rows) ... ok
+test_dirty_has_exact_violation_records (test_gates.GatesTests.test_dirty_has_exact_violation_records) ... ok
+test_empty_policy_and_zero_byte_file (test_gates.GatesTests.test_empty_policy_and_zero_byte_file) ... ok
+test_fk_missing_file_or_schema_is_input_error_even_empty (test_gates.GatesTests.test_fk_missing_file_or_schema_is_input_error_even_empty) ... ok
+test_invalid_config_never_silently_passes (test_gates.GatesTests.test_invalid_config_never_silently_passes) ... ok
+test_invalid_reference_time_is_input_error (test_gates.GatesTests.test_invalid_reference_time_is_input_error) ... ok
+test_invalid_timezone_and_stale_boundary (test_gates.GatesTests.test_invalid_timezone_and_stale_boundary) ... ok
+test_json_nonfinite_and_malformed_contract_errors (test_gates.GatesTests.test_json_nonfinite_and_malformed_contract_errors) ... ok
+test_missing_schema_is_quality_failure (test_gates.GatesTests.test_missing_schema_is_quality_failure) ... ok
+test_nonfinite_and_malformed_numeric_values_fail_quality (test_gates.GatesTests.test_nonfinite_and_malformed_numeric_values_fail_quality) ... ok
+test_null_byte_reference_path_is_config_error (test_gates.GatesTests.test_null_byte_reference_path_is_config_error) ... ok
+test_arithmetic_bounds_fail_as_quality_not_unhandled_decimal_error (test_retention_arithmetic.RetentionArithmeticTests.test_arithmetic_bounds_fail_as_quality_not_unhandled_decimal_error) ... ok
+test_cli_preserves_tolerance_decimal_tokens (test_retention_arithmetic.RetentionArithmeticTests.test_cli_preserves_tolerance_decimal_tokens) ... ok
+test_fraction_comparison_is_independent_of_decimal_precision (test_retention_arithmetic.RetentionArithmeticTests.test_fraction_comparison_is_independent_of_decimal_precision) ... ok
+test_integer_flag_rejects_fraction_without_changing_numeric_range (test_retention_arithmetic.RetentionArithmeticTests.test_integer_flag_rejects_fraction_without_changing_numeric_range) ... ok
+test_ratio_bad_config_rejected_on_empty_data (test_retention_arithmetic.RetentionArithmeticTests.test_ratio_bad_config_rejected_on_empty_data) ... ok
+test_ratio_exact_boundary_zero_denominator_and_bad_cells (test_retention_arithmetic.RetentionArithmeticTests.test_ratio_exact_boundary_zero_denominator_and_bad_cells) ... ok
+test_strict_retention_cli_catches_bounded_wrong_rate_and_fractional_count (test_retention_arithmetic.RetentionArithmeticTests.test_strict_retention_cli_catches_bounded_wrong_rate_and_fractional_count) ... ok
+test_clean_and_saved_export_are_reproducible (test_showcase.ShowcaseTests.test_clean_and_saved_export_are_reproducible) ... ok
+test_dirty_counts_and_exact_samples (test_showcase.ShowcaseTests.test_dirty_counts_and_exact_samples) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.400s
+
+OK

@@ -53,7 +53,7 @@ flowchart LR
     D[Synthetic data CSV] --> L
     R[Reference CSV] --> L
     L --> S[Required schema and empty policy]
-    S --> Q[Seven supported check types]
+    S --> Q[Eight supported check types]
     Q --> O[JSON report and exit code]
 ```
 
@@ -67,9 +67,10 @@ See [examples/contract.json](examples/contract.json) for a complete six-check co
 | --- | --- | --- |
 | `not_null` | `columns`: nonempty distinct list | Row fails if any selected value is empty or whitespace only. |
 | `unique` | `columns`: nonempty distinct list | Exact composite key; each occurrence after the first fails. All blank/whitespace-only values normalize to the same empty key component. Other strings preserve whitespace. |
-| `numeric_range` | `column`, at least one of `min`/`max` | Finite decimal parsing; inclusive bounds. Null, NaN, Inf and malformed values fail as quality violations. Signs, decimal fractions and scientific notation supported; underscores and thousands separators rejected. |
+| `numeric_range` | `column`, at least one of `min`/`max` | Finite decimal parsing; inclusive bounds. Null, NaN, Inf and malformed values fail as quality violations. Signs, decimal fractions and scientific notation supported; underscores and thousands separators rejected. Optional `integer` must be a JSON boolean; true additionally rejects fractional values, while 2.0 and 2e1 count as integral. |
 | `allowed_values` | `column`, `values`: nonempty distinct nonblank strings | Exact string membership, with null always failing. |
 | `foreign_key` | `column`, `reference_file`, `reference_column` | Exact membership in non-null reference values; null always fails. Reference duplicates are harmless. Missing/unreadable file or missing reference column is an input error. Empty reference table means no matching keys. |
+| `ratio_consistency` | `numerator_column`, `denominator_column`, `ratio_column`, `absolute_tolerance` | Three distinct required columns; denominator > 0 and exact rational absolute error <= tolerance. Tolerance is a JSON number 0..1. All operands/tolerance have bounded decimal encodings; see the strict example. |
 | `column_compare` | `left_column`, `right_column`, `operator`: `<=`, `>=` or `==` | Row-wise finite decimal comparison between two distinct required columns; inclusive comparisons and numeric equality. Null, malformed or non-finite cells on either side fail. No expressions are evaluated. |
 | `freshness` | `column`, `max_age_seconds`: finite number >= 0 | Datetime age satisfies `0 <= age <= max_age_seconds`. Future, stale, invalid, naive or null timestamp fails. Offset-normalized comparison with microsecond precision. |
 
@@ -106,3 +107,7 @@ MIT licensed.
 ## Role alignment
 
 See [the current JD comparison](docs/jd-alignment.md) for which data engineering skills this lab demonstrates and which cloud, orchestration or distributed capabilities remain outside its scope.
+
+## Strict count/rate arithmetic
+
+[Run the stricter retention contract](docs/strict-retention.md): reject fractional people counts and rates that disagree with retained/cohort counts. Exact bounded rational comparison honors explicit absolute tolerance without relying on the caller's Decimal precision. Actual examples show a bounded-but-wrong rate and a fractional count each failing its intended check. The original seven-check example and six-check interactive showcase remain reproducible.

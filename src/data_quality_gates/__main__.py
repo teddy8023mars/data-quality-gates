@@ -1,6 +1,7 @@
 """CLI: JSON to stdout and optionally a report file; documented exit taxonomy."""
 import argparse
 import json
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from .engine import ConfigError, InputError, evaluate
 
@@ -10,8 +11,19 @@ def unique_object(pairs):
     for key, value in pairs:
         if key in result:
             raise ConfigError(f'duplicate JSON key: {key}')
+        # Preserve exact tolerance tokens; old numeric settings retain their
+        # historical JSON-float interpretation for backwards compatibility.
+        if isinstance(value, Decimal) and key != 'absolute_tolerance':
+            value = float(value)
         result[key] = value
     return result
+
+
+def decimal_token(value):
+    try:
+        return Decimal(value)
+    except InvalidOperation as exc:
+        raise ConfigError('invalid decimal JSON number') from exc
 
 
 def reject_constant(value):
@@ -27,7 +39,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         try:
-            contract = json.loads(args.contract.read_text(encoding='utf-8'), object_pairs_hook=unique_object, parse_constant=reject_constant)
+            contract = json.loads(args.contract.read_text(encoding='utf-8'), object_pairs_hook=unique_object, parse_constant=reject_constant, parse_float=decimal_token)
         except (OSError, UnicodeError, json.JSONDecodeError) as exc:
             raise ConfigError(f'invalid contract: {exc}') from exc
         report = evaluate(contract, args.data, args.reference_time, args.contract.parent)

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "required_columns": [
+    "cohort_date",
+    "day_offset",
+    "cohort_users",
+    "retained_users",
+    "retention_rate"
+  ],
+  "empty_policy": "fail",
+  "checks": [
+    {
+      "id": "all_present",
+      "type": "not_null",
+      "columns": [
+        "cohort_date",
+        "day_offset",
+        "cohort_users",
+        "retained_users",
+        "retention_rate"
+      ]
+    },
+    {
+      "id": "cohort_grain",
+      "type": "unique",
+      "columns": [
+        "cohort_date",
+        "day_offset"
+      ]
+    },
+    {
+      "id": "supported_offsets",
+      "type": "allowed_values",
+      "column": "day_offset",
+      "values": [
+        "1",
+        "7"
+      ]
+    },
+    {
+      "id": "nonempty_cohort",
+      "type": "numeric_range",
+      "column": "cohort_users",
+      "min": 1,
+      "integer": true
+    },
+    {
+      "id": "nonnegative_retained",
+      "type": "numeric_range",
+      "column": "retained_users",
+      "min": 0,
+      "integer": true
+    },
+    {
+      "id": "bounded_rate",
+      "type": "numeric_range",
+      "column": "retention_rate",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "id": "retained_within_cohort",
+      "type": "column_compare",
+      "left_column": "retained_users",
+      "right_column": "cohort_users",
+      "operator": "<="
+    },
+    {
+      "id": "rate_matches_counts",
+      "type": "ratio_consistency",
+      "numerator_column": "retained_users",
+      "denominator_column": "cohort_users",
+      "ratio_column": "retention_rate",
+      "absolute_tolerance": 1e-12
+    }
+  ]
+}

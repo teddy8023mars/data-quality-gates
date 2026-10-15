@@ -62,3 +62,9 @@ Limits: data/reference sets and all bad-row identifiers held in memory; no bench
 ## Retention contract extension — 2026-10-15
 
 The earlier sections describe initial pre-publication validation. The additive column comparison feature and committed cross-project examples now pass 21 tests on bundled Python 3.12.14: [full output](retention-test-output.txt). Recorded CLI runs: clean exit 0, 8 rows, seven zero counts; dirty exit 1, 8 rows, counts [0,0,0,0,0,0,1], only CSV record 2 fails retained_within_cohort. The original showcase exporter was rerun and its JSON, SVG and HTML remained byte-identical to the prior commit. Remote results for this extension are available in the repository Actions tab after publication; they are recorded in the sprint status separately.
+
+## Strict retention arithmetic — 2026-10-15
+
+Six meaningful new tests first failed due to unsupported check/options and absent strict fixtures. Full28-test suite now passes in strict-test-output.txt. Actual strict CLI runs: clean0/eight zero counts; wrong-rate1/[0,0,0,0,0,0,0,1]; fractional-count1/[0,0,0,0,1,0,0,0]; impossible-count dirty1/[0,0,0,0,0,0,1,1]. All failures at CSV record2; reports captured from real output. Exact bounded rational checks avoid global Decimal precision/float-rounding false passes, with explicit per-operand stored encoding bounds. Original7-check fixture and6-check visual remain unchanged after exporter regeneration. Remote CI must be checked separately for the published commit.
+
+Review found JSON float rounding could accept invalid tolerance tokens or widen an exact boundary. Four direct-CLI raw-token subcases first failed, then passed after preserving Decimal tolerance tokens; other scalar numeric settings retain old float semantics. Invalid decimal construction becomes ConfigError. Full28 tests rerun successfully, all strict fixture outputs unchanged, original showcase rechecked unchanged. Independent fix review found no remaining blockers.

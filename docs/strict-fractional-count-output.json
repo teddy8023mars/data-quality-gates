@@ -1,0 +1,59 @@
+{
+  "status": "failed",
+  "rows": 8,
+  "reference_time": "2026-10-15T12:00:00+00:00",
+  "missing_columns": [],
+  "empty_violation": false,
+  "checks": [
+    {
+      "id": "all_present",
+      "type": "not_null",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "cohort_grain",
+      "type": "unique",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "supported_offsets",
+      "type": "allowed_values",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "nonempty_cohort",
+      "type": "numeric_range",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "nonnegative_retained",
+      "type": "numeric_range",
+      "violations": 1,
+      "rows": [
+        2
+      ]
+    },
+    {
+      "id": "bounded_rate",
+      "type": "numeric_range",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "retained_within_cohort",
+      "type": "column_compare",
+      "violations": 0,
+      "rows": []
+    },
+    {
+      "id": "rate_matches_counts",
+      "type": "ratio_consistency",
+      "violations": 0,
+      "rows": []
+    }
+  ]
+}

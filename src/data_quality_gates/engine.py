@@ -1,6 +1,7 @@
 """Validate configuration before reading data, then evaluate every configured check."""
 import csv
 import operator
+from fractions import Fraction
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -45,6 +46,15 @@ def number(value):
     return parsed
 
 
+def bounded_fraction(value):
+    """Exact arithmetic with bounded coefficient/exponent size, independent of Decimal context."""
+    parsed = number(value)
+    parts = parsed.as_tuple()
+    if len(parts.digits) > 100 or abs(parts.exponent) > 100:
+        raise ValueError('ratio operands require at most 100 stored digits and exponent magnitude 100')
+    return Fraction(parsed)
+
+
 def nonempty_string(value):
     return isinstance(value, str) and bool(value.strip())
 
@@ -71,11 +81,12 @@ def validate_contract(contract):
     seen = set()
     specs = {
         'not_null': (('columns',), ()), 'unique': (('columns',), ()),
-        'numeric_range': (('column',), ('min', 'max')),
+        'numeric_range': (('column',), ('min', 'max', 'integer')),
         'allowed_values': (('column', 'values'), ()),
         'foreign_key': (('column', 'reference_file', 'reference_column'), ()),
         'freshness': (('column', 'max_age_seconds'), ()),
-        'column_compare': (('left_column', 'right_column', 'operator'), ())}
+        'column_compare': (('left_column', 'right_column', 'operator'), ()),
+        'ratio_consistency': (('numerator_column', 'denominator_column', 'ratio_column', 'absolute_tolerance'), ())}
     for check in contract['checks']:
         if not isinstance(check, dict) or not isinstance(check.get('type'), str) or check['type'] not in specs:
             raise ConfigError('unknown check type')
@@ -84,15 +95,27 @@ def validate_contract(contract):
         if not nonempty_string(check['id']) or check['id'] in seen:
             raise ConfigError('check ids must be nonempty and unique')
         seen.add(check['id'])
-        columns = ([check['left_column'], check['right_column']] if check['type'] == 'column_compare'
-                   else check.get('columns', [check.get('column')]))
+        if check['type'] == 'column_compare':
+            columns = [check['left_column'], check['right_column']]
+        elif check['type'] == 'ratio_consistency':
+            columns = [check['numerator_column'], check['denominator_column'], check['ratio_column']]
+        else:
+            columns = check.get('columns', [check.get('column')])
         if not names(columns) or any(c not in contract['required_columns'] for c in columns):
             raise ConfigError('check columns must exist in required_columns')
         kind = check['type']
         if kind == 'column_compare':
             if check['operator'] not in ('<=', '>=', '=='):
                 raise ConfigError('column_compare operator must be <=, >= or ==')
+        elif kind == 'ratio_consistency':
+            try:
+                value = check['absolute_tolerance']
+                if type(value) not in (int, float, Decimal) or not 0 <= bounded_fraction(value) <= 1:
+                    raise ValueError('absolute_tolerance must be a bounded JSON number between 0 and 1')
+            except ValueError as exc: raise ConfigError(str(exc)) from exc
         elif kind == 'numeric_range':
+            if 'integer' in check and type(check['integer']) is not bool:
+                raise ConfigError('integer must be a JSON boolean')
             if 'min' not in check and 'max' not in check:
                 raise ConfigError('numeric_range needs min or max')
             for key in ('min', 'max'):
@@ -163,6 +186,7 @@ def evaluate(contract, data_path, reference_time, base_dir):
         bad_rows = []
         seen = set()
         kind = check['type']
+        tolerance = bounded_fraction(check['absolute_tolerance']) if kind == 'ratio_consistency' else None
         for record, row in enumerate(rows, 2):
             value = row.get(check.get('column'))
             bad = False
@@ -175,7 +199,16 @@ def evaluate(contract, data_path, reference_time, base_dir):
             elif kind == 'numeric_range':
                 try:
                     numeric = number(value)
-                    bad = ('min' in check and numeric < number(check['min'])) or ('max' in check and numeric > number(check['max']))
+                    bad = (('min' in check and numeric < number(check['min']))
+                           or ('max' in check and numeric > number(check['max']))
+                           or (check.get('integer', False) and numeric != numeric.to_integral_value()))
+                except ValueError: bad = True
+            elif kind == 'ratio_consistency':
+                try:
+                    numerator = bounded_fraction(row[check['numerator_column']])
+                    denominator = bounded_fraction(row[check['denominator_column']])
+                    actual = bounded_fraction(row[check['ratio_column']])
+                    bad = denominator <= 0 or abs(actual - numerator / denominator) > tolerance
                 except ValueError: bad = True
             elif kind == 'column_compare':
                 try:

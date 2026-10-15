@@ -1,4 +1,6 @@
-# Gate a synthetic retention export
+# Base retention gate and stricter arithmetic
+
+The original seven-check example below preserves its earlier behavior. [The strict variant](strict-retention.md) adds integral-count and count/rate consistency checks, closing the arithmetic gaps described below.
 
 This example consumes an immutable snapshot of the MOBA lab's exported D1/D7 cohorts. [Source and checksum](../examples/moba-retention/PROVENANCE.md) establish where the eight synthetic rows came from. No company data or production infrastructure is involved.
 

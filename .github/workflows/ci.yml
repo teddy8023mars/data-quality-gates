@@ -40,3 +40,18 @@ jobs:
           test "$result" -eq 1
         env:
           PYTHONPATH: src
+      - name: Strict retention clean fixture passes
+        run: python -m data_quality_gates --contract examples/moba-retention/strict-contract.json --data examples/moba-retention/clean.csv --reference-time 2026-10-15T12:00:00Z
+        env:
+          PYTHONPATH: src
+      - name: Strict arithmetic fixtures fail with quality exit 1
+        shell: bash
+        run: |
+          set +e
+          for fixture in wrong-rate fractional-count dirty; do
+            python -m data_quality_gates --contract examples/moba-retention/strict-contract.json --data "examples/moba-retention/$fixture.csv" --reference-time 2026-10-15T12:00:00Z
+            result=$?
+            test "$result" -eq 1 || exit 1
+          done
+        env:
+          PYTHONPATH: src
